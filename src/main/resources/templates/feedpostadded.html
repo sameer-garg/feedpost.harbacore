@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>submitted</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h2>Success!!</h2>
+<span>Full name:</span><span th:text="${feedpost.name}"></span><br/>
+<span>image:</span><span th:text="${feedpost.image}"></span><br/>
+<span>Content:</span><span th:text="${feedpost.content}"></span><br/>
+<a href="/feedpost">fill once more</a>
+</body>
+</html>

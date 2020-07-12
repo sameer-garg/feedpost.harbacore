@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Feedpost</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>post details</h1>
+<form  th:action="@{/feedposted}" th:object="${feedpost}" method="POST">
+    <p>Name: <input type="text" th:field="*{name}" /></p>
+    <p>image: <input type="text" th:field="*{image}" /></p>
+    <p>content: <input type="text" th:field="*{content}" /></p>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+</form>
+</body>
+</html>
