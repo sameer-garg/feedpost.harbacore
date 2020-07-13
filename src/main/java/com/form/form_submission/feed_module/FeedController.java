@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+
 @Controller
 public class FeedController {
     @Autowired
@@ -24,7 +28,9 @@ public class FeedController {
     }
 
     @PostMapping(value = "/feedposted")
-    public String postForm(@ModelAttribute("feedpost") FeedRequestVO feedpost) {
+    public String postForm(@ModelAttribute("feedpost") FeedRequestVO feedpost) throws ExecutionException, InterruptedException {
+        List<FeedDTO> feedDTO= new ArrayList<FeedDTO>();
+        service.getListOfFeedPost(feedDTO);
         if(service.dataPersistObject(feedpost))                          // calling service methods to persist data which return true if persist was a success
             return "feedpostadded";
         else

@@ -1,10 +1,7 @@
 package com.form.form_submission.feed_module;
 import com.form.form_submission.FirestoreInitializer;
 import com.google.api.core.ApiFuture;
-import com.google.cloud.firestore.DocumentReference;
-import com.google.cloud.firestore.Firestore;
-import com.google.cloud.firestore.WriteBatch;
-import com.google.cloud.firestore.WriteResult;
+import com.google.cloud.firestore.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -29,8 +26,19 @@ public class FeedRepositioryIml implements FeedRepository{
 
 
     @Override
-    public List<FeedEntity> getlist(String name) {
-        return null;
+    public List<FeedDTO> getlist(List<FeedDTO> feedDTO) throws ExecutionException, InterruptedException {
+        CollectionReference collectionReference = firestoreDb.collection(FEED);
+        Query query = collectionReference.orderBy("date", Query.Direction.DESCENDING).limit(3);
+        ApiFuture<QuerySnapshot> future = query.get();
+        List<QueryDocumentSnapshot> documents = future.get().getDocuments();
+        if (Objects.isNull(documents) || documents.size() == 0) {
+            return null;
+        } else {
+            for (QueryDocumentSnapshot documentSnapshot : documents) {
+                feedDTO.add(documentSnapshot.toObject(FeedDTO.class));
+            }
+            return feedDTO;
+        }
     }
     @Override
     public boolean save(FeedEntity savefeedpost) throws ExecutionException, InterruptedException {
