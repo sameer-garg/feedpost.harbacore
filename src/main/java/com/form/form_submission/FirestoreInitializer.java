@@ -16,7 +16,6 @@ public class FirestoreInitializer {
      * Initialize Firestore using default project ID.
      */
     public FirestoreInitializer() {
-        System.out.println("Initializing this");
         FirestoreOptions firestoreOptions =
                 FirestoreOptions.getDefaultInstance().toBuilder()
                         .setProjectId(projectId)
