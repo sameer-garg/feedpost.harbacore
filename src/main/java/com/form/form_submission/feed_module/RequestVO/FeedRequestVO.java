@@ -1,4 +1,4 @@
-package com.form.form_submission.feed_module;
+package com.form.form_submission.feed_module.RequestVO;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

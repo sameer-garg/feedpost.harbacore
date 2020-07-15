@@ -1,10 +1,12 @@
-package com.form.form_submission.feed_module;
+package com.form.form_submission.feed_module.Service;
 
+import com.form.form_submission.feed_module.DAO.FeedRepository;
+import com.form.form_submission.feed_module.DTO.FeedDTO;
+import com.form.form_submission.feed_module.Model.FeedEntity;
+import com.form.form_submission.feed_module.RequestVO.FeedRequestVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -14,11 +16,10 @@ public class FeedService {
     @Autowired
     private FeedRepository repo;
 
-    public String getCurrentTimeUsingDate() {
-        Date date = new Date();
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        String formattedDate = dateFormat.format(date);
-        return formattedDate;
+    public Date getCurrentTimeUsingDate() {
+        long date= System.currentTimeMillis();
+        Date currentEpocTime = new Date(date);
+        return currentEpocTime;
     }
 
     public boolean dataPersistObject(FeedRequestVO feedpost) {
@@ -43,7 +44,7 @@ public class FeedService {
         }
     }
 
-    public List<FeedDTO> getListOfFeedPost(List<FeedDTO> feedDTO) throws ExecutionException, InterruptedException {
-        return repo.getlist(feedDTO);
+    public List<FeedDTO> getListOfFeedPost() throws ExecutionException, InterruptedException {
+        return repo.getlist();
     }
 }

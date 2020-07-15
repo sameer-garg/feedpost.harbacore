@@ -1,22 +1,20 @@
-package com.form.form_submission.feed_module;
+package com.form.form_submission.feed_module.DAO;
 import com.form.form_submission.FirestoreInitializer;
+import com.form.form_submission.feed_module.DTO.FeedDTO;
+import com.form.form_submission.feed_module.Model.FeedEntity;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 
 @Repository
-public class FeedRepositioryIml implements FeedRepository{
+public class FeedRepositioryIml implements FeedRepository {
     private final String FEED= "feed";
-    private final String SLASH = "/";
-    private final String UNDERSCORE = "_";
-    private final String DOT = ".";
-
-
     private Firestore firestoreDb;
 
     @Autowired
@@ -26,7 +24,8 @@ public class FeedRepositioryIml implements FeedRepository{
 
 
     @Override
-    public List<FeedDTO> getlist(List<FeedDTO> feedDTO) throws ExecutionException, InterruptedException {
+    public List<FeedDTO> getlist() throws ExecutionException, InterruptedException {
+        List<FeedDTO> feedDTO= new ArrayList<FeedDTO>();
         CollectionReference collectionReference = firestoreDb.collection(FEED);
         Query query = collectionReference.orderBy("date", Query.Direction.DESCENDING).limit(3);
         ApiFuture<QuerySnapshot> future = query.get();
@@ -42,23 +41,16 @@ public class FeedRepositioryIml implements FeedRepository{
     }
     @Override
     public boolean save(FeedEntity savefeedpost) throws ExecutionException, InterruptedException {
-        WriteBatch batch = firestoreDb.batch();
-
-        //write to blog list collection
+      /*  WriteBatch batch = firestoreDb.batch();
         DocumentReference documentReference = firestoreDb.collection(FEED)
                 .document();
         batch.set(documentReference, savefeedpost);
-
-
-
-
-        ApiFuture<List<WriteResult>> future = batch.commit();
-        for (WriteResult result :future.get()) {
-//            System.out.println("Update time : " + result.getUpdateTime());
-            if (Objects.isNull(result.getUpdateTime())){
+        ApiFuture<List<WriteResult>> future = batch.commit();*/
+        ApiFuture<WriteResult> future = firestoreDb.collection(FEED).document().set(savefeedpost);
+            if (Objects.isNull(future.get().getUpdateTime())){
                 return false;
             }
-        }
+
         return true;
     }
 }
