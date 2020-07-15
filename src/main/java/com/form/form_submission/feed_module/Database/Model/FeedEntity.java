@@ -1,4 +1,5 @@
-package com.form.form_submission.feed_module.Model;
+package com.form.form_submission.feed_module.Database.Model;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,12 +10,13 @@ import java.util.Date;
 
 
 @Entity
-@Getter@Setter
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class FeedEntity {
     public String name;
-    public String image ;
+    public String image;// to store the image url
     public String content;
     public Date date;
 

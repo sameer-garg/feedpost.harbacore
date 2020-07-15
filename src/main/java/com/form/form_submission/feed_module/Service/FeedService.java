@@ -1,8 +1,8 @@
 package com.form.form_submission.feed_module.Service;
 
-import com.form.form_submission.feed_module.DAO.FeedRepository;
+import com.form.form_submission.feed_module.Database.DAO.FeedRepository;
 import com.form.form_submission.feed_module.DTO.FeedDTO;
-import com.form.form_submission.feed_module.Model.FeedEntity;
+import com.form.form_submission.feed_module.Database.Model.FeedEntity;
 import com.form.form_submission.feed_module.RequestVO.FeedRequestVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ public class FeedService {
     private FeedRepository repo;
 
     public Date getCurrentTimeUsingDate() {
-        long date= System.currentTimeMillis();
+        long date = System.currentTimeMillis();  // tge format for date in epoc time
         Date currentEpocTime = new Date(date);
         return currentEpocTime;
     }
@@ -28,7 +28,7 @@ public class FeedService {
         savefeedpost.image = feedpost.image;
         savefeedpost.content = feedpost.content;
         savefeedpost.date = getCurrentTimeUsingDate();
-        return dataPersistObjectPopulate(savefeedpost);
+        return dataPersistObjectPopulate(savefeedpost);   // true if the data is saved and false if its not
     }
 
     public boolean dataPersistObjectPopulate(FeedEntity savefeedpost) {

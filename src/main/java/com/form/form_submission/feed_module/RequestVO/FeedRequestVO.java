@@ -4,15 +4,16 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-@Getter@Setter
+
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class FeedRequestVO
-   {
-        public String name;
-        public String image ;
-        public String content;
+public class FeedRequestVO {
+    public String name;
+    public String image;
+    public String content;
 
-    }
+}
 
 
