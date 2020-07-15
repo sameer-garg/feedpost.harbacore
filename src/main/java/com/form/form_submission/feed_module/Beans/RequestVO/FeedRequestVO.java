@@ -1,15 +1,19 @@
-package com.form.form_submission.feed_module.DTO;
+package com.form.form_submission.feed_module.Beans.RequestVO;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
-@NoArgsConstructor
 @Getter
 @Setter
-public class FeedDTO {
+@AllArgsConstructor
+@NoArgsConstructor
+public class FeedRequestVO {
     public String name;
     public String image;
     public String content;
+
 }
+
+

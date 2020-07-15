@@ -1,6 +1,6 @@
 package com.form.form_submission.feed_module.Controller;
 
-import com.form.form_submission.feed_module.RequestVO.FeedRequestVO;
+import com.form.form_submission.feed_module.Beans.RequestVO.FeedRequestVO;
 import com.form.form_submission.feed_module.Service.FeedService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

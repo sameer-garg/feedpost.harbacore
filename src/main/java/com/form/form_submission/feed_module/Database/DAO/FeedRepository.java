@@ -1,7 +1,7 @@
 package com.form.form_submission.feed_module.Database.DAO;
 
 
-import com.form.form_submission.feed_module.DTO.FeedDTO;
+import com.form.form_submission.feed_module.Beans.DTO.FeedDTO;
 import com.form.form_submission.feed_module.Database.Model.FeedEntity;
 
 import java.util.List;
