@@ -13,26 +13,34 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.concurrent.ExecutionException;
 
 @Controller
-public class FeedController {
+public class  FeedController {
     @Autowired
     private FeedService service;
 
 
-    @RequestMapping(value = "/feedpost")
+    @RequestMapping(value = "/addpost")
     public ModelAndView getForm() throws ExecutionException, InterruptedException {
         FeedRequestVO feedpost = new FeedRequestVO();               // creating an RequestVO object "feedpost" to store data from UI
         ModelAndView mav = new ModelAndView();
         mav.addObject("feedpost", feedpost);          // sending the feedpost object to store the required user details and the feedpost
-        mav.addObject("posts", service.getListOfFeedPost());        // simultaneous calling and passing of list named "posts" consiting of posts sorted acc to latest update time
-        mav.setViewName("formfeedpost");                                        // rendering the form template where the user enter details
+        mav.setViewName("formfeedpost");// rendering the form template where the user enter details
         return mav;
     }
 
     @PostMapping(value = "/feedposted")
     public String postForm(@ModelAttribute("feedpost") FeedRequestVO feedpost) throws ExecutionException, InterruptedException {
-        if (service.dataPersistObject(feedpost))                          // calling service methods to persist data which return true if persist was a success
-            return "feedpostadded";
+        if (service.dataPersistObject(feedpost)) {                        // calling service methods to persist data which return true if persist was a success
+
+            return "redirect:/listfeed";
+        }
         else
             return "fail";
+    }
+    @RequestMapping(value = "/listfeed")
+    public ModelAndView listfeed() throws ExecutionException, InterruptedException {
+        ModelAndView mavFeedList = new ModelAndView();
+        mavFeedList.addObject("posts", service.getListOfFeedPost());        // simultaneous calling and passing of list named "posts" consiting of posts sorted acc to latest update time
+        mavFeedList.setViewName("feedlist");// rendering the form template where the user enter details
+        return mavFeedList;
     }
 }

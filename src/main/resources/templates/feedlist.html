@@ -16,44 +16,27 @@
 
 <body>
 <div class="container border border-secondary border-bottom-0 border-top-0">
-    <form th:action="@{/feedposted}" th:object="${feedpost}" method="POST">
-        <h2 class = "heading">Add Post</h2>
-        <hr >
-        <div class="row justify-content-lg-center row1">
-
-            <div class=" col-lg-3">
-
-                <div class="form-group ">
-                    <!-- <label for="exampleInputName">Name</label> -->
-                    <input type="text" class="form-control" placeholder="Enter name" th:field="*{name}" required>
-                    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-                </div>
-
-            </div>
-
-            <div class="col-lg-6">
-
-                <div class="form-group ">
-                    <!-- <label for="exampleInputImageurl">Imageurl</label> -->
-                    <input type="text" class="form-control" placeholder="Imageurl" th:field="*{image}" required>
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="row  justify-content-lg-center">
-
+    <h2 class="heading">Latest Posts</h2>
+    <tr th:each="post: ${posts}">
+        <hr class="demarkate-line">
+        <div class="row  justify-content-lg-center row1">
             <div class="col-lg-9">
-                <div class=" form-group ">
-                    <!-- <label for="exampleInputImageurl">Imageurl</label> -->
-                    <input type="text" class="h-100 form-control" placeholder="Content" th:field="*{content}" required>
+                <div class="card text-white bg-dark mb-3  border-light mb-3 cont ">
+                    <div class="card-header bg-transparent  border-light mb-3">
+                        <td th:text="${post.name}"/>
+                    </div>
+                    <div class="picture">
+                        <img class=" img-fluid card-img-top" src="${post.image}">
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                        <td th:text="${post.content}"/>
+                        </p>
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Add Post</button>
             </div>
-
         </div>
-    </form>
+    </tr>
 
 </div>
 
