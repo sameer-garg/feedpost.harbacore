@@ -14,8 +14,9 @@ import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 
 @Repository
-public class FeedRepositioryIml implements com.form.form_submission.feed_module.Database.DAO.FeedRepository {
-    private final String FEED = "feed"; // name of the collection stored in variable FEED
+public class FeedRepositioryIml
+        implements com.form.form_submission.feed_module.Database.DAO.FeedRepository {
+    private final String FEED = "feed";                                       // name of the collection stored in variable FEED
     private Firestore firestoreDb;
 
     @Autowired
@@ -26,16 +27,27 @@ public class FeedRepositioryIml implements com.form.form_submission.feed_module.
 
     @Override
     public List<FeedDTO> getlist() throws ExecutionException, InterruptedException {
+
         List<FeedDTO> feedDTOList = new ArrayList<FeedDTO>();                       // creating a list of object of dto class to store posts
-        CollectionReference collectionReference = firestoreDb.collection(FEED);
-        Query query = collectionReference.orderBy("date", Query.Direction.DESCENDING).limit(5); // getting the doc reference of top  5 latest posts
+
+        CollectionReference
+                collectionReference = firestoreDb.collection(FEED);
+
+        Query query = collectionReference
+                .orderBy("date", Query.Direction.DESCENDING).limit(5);   // getting the doc reference of top  5 latest posts
+
         ApiFuture<QuerySnapshot> future = query.get();
+
         List<QueryDocumentSnapshot> documents = future.get().getDocuments();
+
         if (Objects.isNull(documents) || documents.size() == 0) {
             return null;
-        } else {
+        }
+        else {
+
             for (QueryDocumentSnapshot documentSnapshot : documents) {
-                feedDTOList.add(documentSnapshot.toObject(FeedDTO.class));  // adding documents data as an dto object in list
+                feedDTOList.add(documentSnapshot.toObject(FeedDTO.class));     // adding documents data as an dto object in list
+
             }
             return feedDTOList;
         }
@@ -44,15 +56,13 @@ public class FeedRepositioryIml implements com.form.form_submission.feed_module.
     @Override
     public boolean save(FeedEntity savefeedpost) throws ExecutionException, InterruptedException {
 
-      /*  WriteBatch batch = firestoreDb.batch();
-        DocumentReference documentReference = firestoreDb.collection(FEED)
-                .document();
-        batch.set(documentReference, savefeedpost);
-        ApiFuture<List<WriteResult>> future = batch.commit();*/
+        ApiFuture<WriteResult>
+                future = firestoreDb.collection(FEED).document().set(savefeedpost); //saving the requestVO object data in a document in firestore
 
-        ApiFuture<WriteResult> future = firestoreDb.collection(FEED).document().set(savefeedpost); //saving the requestVO object data in a document in firestore
         if (Objects.isNull(future.get().getUpdateTime())) {
+
             return false;
+
         }
 
         return true;

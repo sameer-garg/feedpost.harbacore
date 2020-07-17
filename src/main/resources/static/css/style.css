@@ -8,25 +8,25 @@
              width: 60%;
         }
 
-        .cont{
+        .cont{                            // the styling for parent card div
             display: flex;
             justify-content: center;
             align-items: center;
 
         }
 
-        .demarkate-line{
+        .demarkate-line{                  // style for the <hr> line
                border-top: 1px solid rgb(59, 48, 48);
                width: 80%;
                margin-left: auto;
                margin-right: auto;
         }
 
-        .picture{
+        .picture{                          // style for image displayed in cards
             display: flex;
             justify-content: center;
             align-items: center;
         }
-        .heading{
+        .heading{                         // for the headings Add Post and Latest Posts
                     text-align: center;
         }

@@ -17,20 +17,20 @@
 <body>
 <div class="container border border-secondary border-bottom-0 border-top-0">
     <h2 class="heading">Latest Posts</h2>
-    <tr th:each="post: ${posts}">
+    <tr th:each="post: ${posts}">    //  for iternating through each post in the list parameter sent"posts"
         <hr class="demarkate-line">
-        <div class="row  justify-content-lg-center row1">
+        <div class="row  justify-content-lg-center ">
             <div class="col-lg-9">
                 <div class="card text-white bg-dark mb-3  border-light mb-3 cont ">
                     <div class="card-header bg-transparent  border-light mb-3">
-                        <td th:text="${post.name}"/>
+                        <td th:text="${post.name}"/>    // dipaying the value of name field of object
                     </div>
                     <div class="picture">
-                        <img class=" img-fluid card-img-top" src="${post.image}">
+                        <img class=" img-fluid card-img-top" src="${post.image}"> // stoting the image url in src
                     </div>
                     <div class="card-body">
                         <p class="card-text">
-                        <td th:text="${post.content}"/>
+                        <td th:text="${post.content}"/>        // displaying the content of each post
                         </p>
                     </div>
                 </div>

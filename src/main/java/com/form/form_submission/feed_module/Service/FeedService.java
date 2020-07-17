@@ -17,22 +17,28 @@ public class FeedService {
     private FeedRepository repo;
 
     public Date getCurrentTimeUsingDate() {
-        long date = System.currentTimeMillis();  // tge format for date in epoc time
+
+        long date = System.currentTimeMillis();                      // the format for date in epoc time
         Date currentEpocTime = new Date(date);
         return currentEpocTime;
+
     }
 
     public boolean dataPersistObject(FeedRequestVO feedpost) {
+
         FeedEntity savefeedpost = new FeedEntity();                  // creating an object of entity class  for persisting it into database
         savefeedpost.name = feedpost.name;
         savefeedpost.image = feedpost.image;
         savefeedpost.content = feedpost.content;
         savefeedpost.date = getCurrentTimeUsingDate();
-        return dataPersistObjectPopulate(savefeedpost);   // true if the data is saved and false if its not
+        return dataPersistObjectPopulate(savefeedpost);              // true if the data is saved and false if its not
+
     }
 
     public boolean dataPersistObjectPopulate(FeedEntity savefeedpost) {
+
         return save(savefeedpost);
+
     }
 
     public boolean save(FeedEntity savefeedpost) {
@@ -44,7 +50,10 @@ public class FeedService {
         }
     }
 
-    public List<FeedDTO> getListOfFeedPost() throws ExecutionException, InterruptedException {
+    public List<FeedDTO> getListOfFeedPost()
+            throws ExecutionException, InterruptedException {
+
         return repo.getlist();
+
     }
 }
