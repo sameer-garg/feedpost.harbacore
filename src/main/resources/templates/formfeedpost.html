@@ -16,15 +16,17 @@
 
 <body>
 <div class="container border border-secondary border-bottom-0 border-top-0">
-    <form th:action="@{/feedposted}" th:object="${feedpost}" method="POST">  // storing the data obatiner in collector object "feedpost"
-                                                                                and  directing the object at end point "feedposted"
-        <h2 class = "heading">Add Post</h2>
+    <form th:action="@{/feedposted}" th:object="${feedpost}" method="POST">  <!--// storing the data obatiner in collector object "feedpost"
+                                                                              and  directing the object at end point "feedposted"-->
+        <div class="heading">
+        <h2>Add Post</h2>
+        </div>
         <hr >
         <div class="row justify-content-lg-center ">
 
             <div class=" col-lg-3">
 
-                <div class="form-group ">  // storing the various input in object fields
+                <div class="form-group ">  <!--// storing the various input in object fields-->
                     <!-- <label for="exampleInputName">Name</label> -->
                     <input type="text" class="form-control" placeholder="Enter name" th:field="*{name}" required>
                 </div>
