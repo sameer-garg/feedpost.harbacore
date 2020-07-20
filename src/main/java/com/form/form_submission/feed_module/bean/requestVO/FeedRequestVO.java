@@ -1,4 +1,4 @@
-package com.form.form_submission.feed_module.Beans.RequestVO;
+package com.form.form_submission.feed_module.bean.requestVO;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

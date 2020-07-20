@@ -1,8 +1,8 @@
-package com.form.form_submission.feed_module.Database.DAO;
+package com.form.form_submission.feed_module.database.dao;
 
 import com.form.form_submission.FirestoreInitializer;
-import com.form.form_submission.feed_module.Beans.DTO.FeedDTO;
-import com.form.form_submission.feed_module.Database.Model.FeedEntity;
+import com.form.form_submission.feed_module.bean.dto.FeedDTO;
+import com.form.form_submission.feed_module.database.model.FeedEntity;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import java.util.concurrent.ExecutionException;
 
 @Repository
 public class FeedRepositioryIml
-        implements com.form.form_submission.feed_module.Database.DAO.FeedRepository {
+        implements com.form.form_submission.feed_module.database.dao.FeedRepository {
     private final String FEED = "feed";                                       // name of the collection stored in variable FEED
     private Firestore firestoreDb;
 

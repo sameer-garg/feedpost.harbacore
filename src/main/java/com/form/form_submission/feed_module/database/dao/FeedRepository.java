@@ -1,8 +1,8 @@
-package com.form.form_submission.feed_module.Database.DAO;
+package com.form.form_submission.feed_module.database.dao;
 
 
-import com.form.form_submission.feed_module.Beans.DTO.FeedDTO;
-import com.form.form_submission.feed_module.Database.Model.FeedEntity;
+import com.form.form_submission.feed_module.bean.dto.FeedDTO;
+import com.form.form_submission.feed_module.database.model.FeedEntity;
 
 import java.util.List;
 import java.util.concurrent.ExecutionException;

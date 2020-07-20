@@ -1,9 +1,9 @@
-package com.form.form_submission.feed_module.Service;
+package com.form.form_submission.feed_module.service;
 
-import com.form.form_submission.feed_module.Database.DAO.FeedRepository;
-import com.form.form_submission.feed_module.Beans.DTO.FeedDTO;
-import com.form.form_submission.feed_module.Database.Model.FeedEntity;
-import com.form.form_submission.feed_module.Beans.RequestVO.FeedRequestVO;
+import com.form.form_submission.feed_module.database.dao.FeedRepository;
+import com.form.form_submission.feed_module.bean.dto.FeedDTO;
+import com.form.form_submission.feed_module.database.model.FeedEntity;
+import com.form.form_submission.feed_module.bean.requestVO.FeedRequestVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.form.form_submission.feed_module.Beans.DTO;
+package com.form.form_submission.feed_module.bean.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
